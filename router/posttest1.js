@@ -16,6 +16,38 @@ const express = require('express');
 const router = express.Router();
 const bodyParser = require('body-parser');
 
+const Sequelize = require('sequelize');
+const db = require("../models");
+const { query } = require('express');
+const Tutorial = db.tutorials;
+const Op = db.Sequelize.Op;
+
+router.post('/tutorial', async function(req, res, next) {
+    
+    //Create and save a new tutorial
+    //exports.create = (req, res) => { //res 값 위에랑 중복되서 안써야함
+    if (!req.body.title) {
+      res.status(400).send({
+      message: "Content can not be empty!",
+      });
+      return;
+    }
+
+    let queryWhere = {};
+    queryWhere.title = {
+        [Op.eq] : req.body.title,
+    };
+
+    const tutorialData = await Tutorial.findAll({
+        where : queryWhere,
+        raw:true
+    })
+
+    return res.send(tutorialData);
+
+    }
+)
+
 /* POST */
 router.post('/', function(req, res) { // next
     var from = req.body.from;
