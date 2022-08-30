@@ -20,5 +20,8 @@ db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
 db.tutorials = require("./tutorialmodel.js")(sequelize, Sequelize);
+db.member = require("./member.js")(sequelize, Sequelize); //MEMBER, ORDER, userInfo
+db.order = require("./order.js")(sequelize, Sequelize); //MEMBER, ORDER, userInfo
+db.userInfo = require("./userInfo.js")(sequelize, Sequelize); //MEMBER, ORDER, userInfo
 
 module.exports = db;

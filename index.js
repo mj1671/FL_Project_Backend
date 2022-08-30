@@ -19,6 +19,9 @@ db.sequelize.sync() // 추가. db연결할때 필요함
 const gettest1 = require('./router/gettest1')
 const posttest1 = require('./router/posttest1')
 
+const PostgreDataTest1 = require('./router/PostgreDataTest1')
+app.use('/api/PostgreDataTest1', PostgreDataTest1)
+
 app.use('/api/gettest1', gettest1)
 app.use('/api/posttest1', posttest1)
 
