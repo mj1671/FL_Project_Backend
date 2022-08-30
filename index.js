@@ -13,6 +13,7 @@ app.use(express.urlencoded({
   extended: false
 }));
 
+//모델 세팅
 const db = require('./models') // 추가. db연결할때 필요함
 db.sequelize.sync() // 추가. db연결할때 필요함
 

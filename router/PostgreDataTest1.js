@@ -156,7 +156,9 @@ router.post('/memberjoin', async function(req, res, next) {
     if(req.body.join == 'inner'){
       // member.belongsTo(order, {foreignKey: 'MEM_NO'});
       // order.hasOne(member, {foreignKey : 'MEM_NO'});
-      // const memberjoinData = await order.findAll({include: [member]});
+      // const memberjoinData = await order.findAll({
+      //   include: [member]
+      // });
       
       Member.hasOne(Order);
       // Order.belongsTo(Member);
