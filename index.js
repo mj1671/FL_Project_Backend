@@ -13,6 +13,14 @@ app.use(express.urlencoded({
   extended: false
 }));
 
+//front(vue) host:8080과 연결
+const cors = require('cors')
+let corsOption = {
+  origin: 'http://localhost:8080',
+  credentials: true
+}
+app.use(cors(corsOption));
+
 //모델 세팅
 const db = require('./models') // 추가. db연결할때 필요함
 db.sequelize.sync() // 추가. db연결할때 필요함

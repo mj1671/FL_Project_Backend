@@ -19,6 +19,7 @@ const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
+//db 데이터베이스 연결 
 db.tutorials = require("./tutorialmodel.js")(sequelize, Sequelize);
 db.member = require("./member.js")(sequelize, Sequelize); //MEMBER, ORDER, userInfo
 db.order = require("./order.js")(sequelize, Sequelize); //MEMBER, ORDER, userInfo

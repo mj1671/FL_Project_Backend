@@ -19,46 +19,6 @@ router.get('/userInfo', async function(req, res, next) {
     //     return;
     // }
   
-    // const userInfo = {
-    //     //title: req.query.title, //get써서 query 사용. post면 body 사용
-    //     //description: req.query.description,
-    //     //published: req.query.published ? req.query.published : false,
-    //     AGE: req.query.AGE,
-    //     ADDRESS: req.query.ADDRESS,
-    //     USERID: req.query.USERID,
-    //     USERNAME: req.query.USERNAME,
-    //     SEX: req.query.SEX
-    // };
-    
-    // // insert함. 테이블 없으면 생성까지 함
-    // UserInfo.create(userInfo) 
-    //     .then((data) => {
-    //     res.send(data);
-    //     })
-    //     .catch((err) => {
-    //     res.status(500).send({
-    //     message:
-    //     err.message || "Some error occurred while creating the userInfo.",
-    //     });
-    // });
-    
-    // Retrieve all Tutorials from the database.
-    //exports.findAll = (req, res) => {
-        // const USERID = req.query.USERID;
-        // var condition = USERID ? { USERID: { [Op.iLike]: `%${USERID}%` } } : null;
-      
-        // UserInfo.findAll({ where: condition })
-        //   .then((data) => {
-        //     res.send(data);
-        //   })
-        //   .catch((err) => {
-        //     res.status(500).send({
-        //       message:
-        //         err.message || "Some error occurred while retrieving tutorials.",
-        //     });
-        //   });
-    //};
-
     /*
     UserInfo.query("SELECT * FROM userInfo", function (error, result) {
         if (error) {
@@ -88,43 +48,6 @@ router.get('/member', async function(req, res, next) {
     //     return;
     // }
   
-    // const member = {
-    //     MEM_NO: req.query.MEM_NO,
-    //     GENDER: req.query.GENDER,
-    //     AGEBAND: req.query.AGEBAND,
-    //     DATE: req.query.DATE,
-    //     ADDRESS: req.query.ADDRESS,
-    // };
-
-    // // insert함. 테이블 없으면 생성까지 함
-    // Member.create(member) 
-    //     .then((data) => {
-    //     res.send(data);
-    //     })
-    //     .catch((err) => {
-    //     res.status(500).send({
-    //     message:
-    //     err.message || "Some error occurred while creating the MEMBER.",
-    //     });
-    // });
-    
-    // Retrieve all Tutorials from the database.
-    //exports.findAll = (req, res) => {
-        // const MEM_NO = req.query.MEM_NO;
-        // var condition = MEM_NO ? { MEM_NO: { [Op.iLike]: `%${MEM_NO}%` } } : null;
-      
-        // Member.findAll({ where: condition })
-        //   .then((data) => {
-        //     res.send(data);
-        //   })
-        //   .catch((err) => {
-        //     res.status(500).send({
-        //       message:
-        //         err.message || "Some error occurred while retrieving tutorials.",
-        //     });
-        //   });
-    //};
-
     /*
     Member.query("SELECT * FROM MEMBER", function (error, result) {
         if (error) {
