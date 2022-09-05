@@ -1,5 +1,5 @@
 /*const request = require('request'); //api 사용
-const express = require('express'); //서버 사용
+const express = require('express'); //서버 사용. express 모듈을 가져옴
 const router = express.Router(); //express 라이브러리 안에 있는 기능
 
 router.post('/', function(req,res){
@@ -19,8 +19,8 @@ const bodyParser = require('body-parser');
 const Sequelize = require('sequelize');
 const db = require("../models");
 const { query } = require('express');
+const Op = db.Sequelize.Op; //연산자 등호같은거
 const Tutorial = db.tutorials;
-const Op = db.Sequelize.Op;
 
 router.post('/tutorial', async function(req, res, next) {
     
@@ -39,12 +39,11 @@ router.post('/tutorial', async function(req, res, next) {
     };
 
     const tutorialData = await Tutorial.findAll({
-        where : queryWhere,
+        where: queryWhere,
         raw:true
     })
 
     return res.send(tutorialData);
-
     }
 )
 

@@ -4,15 +4,15 @@ module.exports = (sequelize, Sequelize) => {
   		ADDRESS: {type: Sequelize.STRING},
       	USERID: {
             type: Sequelize.STRING,
-            primaryKey : true
+            primaryKey : true // id 생성안되게함
         },
         USERNAME: {type: Sequelize.STRING},
         SEX: {type: Sequelize.STRING},
         
 	}, 
     {
-        timestamps : false,
-        freezeTableName: true,
+        timestamps : false, // 다른칼럼 생성안되게함
+        freezeTableName: true, // 테이블 이름 복수형x
         //tableName: "userInfo"
     });
 	return userInfo

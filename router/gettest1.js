@@ -1,5 +1,5 @@
 /*const request = require('request'); //api 사용
-const express = require('express'); //서버 사용
+const express = require('express'); //서버 사용. express 모듈을 가져옴
 const router = express.Router(); //express 라이브러리 안에 있는 기능
 /*
 router.get('/', function(req,res){
@@ -13,8 +13,8 @@ const bodyParser = require('body-parser');
 
 const Sequelize = require('sequelize');
 const db = require("../models");
-const Tutorial = db.tutorials;
-const Op = db.Sequelize.Op;
+const Op = db.Sequelize.Op; //연산자 등호같은거
+const Tutorial = db.tutorials // tutorials 테이블과 관련된 모델 tutorialmodel.js를 불러오는게(require) db.tutorials -> 간단하게 Tutorial로 선언
 
 router.get('/tutorial', async function(req, res, next) {
     
@@ -34,9 +34,9 @@ router.get('/tutorial', async function(req, res, next) {
     };
 
     // insert함. 테이블 없으면 생성까지 함
-    Tutorial.create(tutorial) 
+    Tutorial.create(tutorial)
         .then((data) => {
-        res.send(data);
+        res.send("INSERT됨"); // front(vue)에 반환하는 내용
         })
         .catch((err) => {
         res.status(500).send({
