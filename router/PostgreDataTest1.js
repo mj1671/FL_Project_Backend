@@ -12,25 +12,7 @@ const Order = db.order; //
 const UserInfo = db.userInfo; //
 
 router.get('/userInfo', async function(req, res, next) {
-    // if (!req.query.USERID) {
-    //     res.status(400).send({
-    //     message: "Content can not be empty!",
-    //     });
-    //     return;
-    // }
-  
-    /*
-    UserInfo.query("SELECT * FROM userInfo", function (error, result) {
-        if (error) {
-          throw error;
-        }
-        res.status(200).json({
-          data: result.rows,
-        });
-      });
     
-    */
-
     const userInfoData = await UserInfo.findAll({
         //where : queryWhere,
         raw:true
@@ -41,25 +23,7 @@ router.get('/userInfo', async function(req, res, next) {
 
 
 router.get('/member', async function(req, res, next) {
-    // if (!req.query.MEM_NO) {
-    //     res.status(400).send({
-    //     message: "Content can not be empty!",
-    //     });
-    //     return;
-    // }
-  
-    /*
-    Member.query("SELECT * FROM MEMBER", function (error, result) {
-        if (error) {
-          throw error;
-        }
-        res.status(200).json({
-          data: result.rows,
-        });
-      });
     
-    */
-
     const memeberData = await Member.findAll({
         //where : queryWhere,
         raw:true

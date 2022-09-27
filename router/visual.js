@@ -28,9 +28,11 @@ router.get('/', async function(req, res, next) {
 router.post('/comp', async function(req, res, next) {
     
     let queryWhere = {};
-    queryWhere.COMP_ID = { [Op.eq] : req.body.COMP_ID }; // -> queryWhere = {}에 {COMP_ID : front에서 받아온 파라미터. COMP_ID를 키로 가지는 값 'A'} 들어감
+    queryWhere.COMP_ID = { [Op.eq] : req.body.COMP }; // -> queryWhere = {}에 {COMP_ID : front에서 받아온 파라미터. COMP_ID를 키로 가지는 값 'A'} 들어감
     //req.body.COMP_ID 는 front(vue)로 부터 받는 파라미터 값. 여기서 COMP_ID는 키. 즉 COMP_ID : 값 형태로 받음
-
+    queryWhere.DATE_T = { [Op.between] : [req.body.from, req.body.to] }; // [Op.between] : [ , ] 형태
+    // between A B -> A <= X < B 따라서 B가 포함안되므로 포함되게 하기위해서 front에서 to: await this.month(this.todate.to) 에서 todate.to로 수정
+    
     const visualData = await Visualdata.findAll({  //findAll ㅡ> select 조회하는거. 결과를 visualData 변수에 넣음
         where: queryWhere, // { : } 형태
         raw: true

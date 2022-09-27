@@ -1,11 +1,11 @@
 module.exports = (sequelize, Sequelize) => {
 	const visualdata = sequelize.define("VisualData", { //테이블이랑 밑에는 칼럼
-		DATA_T: {type: Sequelize.DATE},
+		DATE_T: {type: Sequelize.DATE},
         COMP_ID: {
             type: Sequelize.STRING,
             primaryKey : true // id 생성안되게함
         },
-        TOTALCNT: {type: Sequelize.STRING},
+        TOTALCNT: {type: Sequelize.STRING}, // INTEGER?
         
     }, 
     {

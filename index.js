@@ -34,7 +34,9 @@ const PostgreDataTest1 = require('./router/PostgreDataTest1')
 app.use('/api/PostgreDataTest1', PostgreDataTest1)
 const visual = require('./router/visual')
 app.use('/api/visual', visual)
-const visual = require('./router/pythonget')
+const board = require('./router/board')
+app.use('/api/board', board)
+const pythonget = require('./router/pythonget')
 app.use('/api/pythonget', pythonget)
 
 
