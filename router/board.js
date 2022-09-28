@@ -27,9 +27,6 @@ router.get('/', async function(req, res, next) {
 
 router.get('/create', async function(req, res, next) {
     
-    //let queryWhere = {}; //
-    //queryWhere.id = { [Op.in] : [Number(req.query.id)]}; // -> queryWhere = {}에 {COMP_ID : front에서 받아온 파라미터. COMP_ID를 키로 가지는 값 'A'} 들어감
-    
     const add = {
         id: Number(req.query.id), //Number() 사용해서 다시 숫자로 바꿔주기
         title: req.query.title, //get써서 query 사용. post면 body 사용
@@ -45,13 +42,19 @@ router.get('/create', async function(req, res, next) {
 })
 
 router.get('/change', async function(req, res, next) {
-    
+    const add = {
+        //id: Number(req.query.id), //Number() 사용해서 다시 숫자로 바꿔주기
+        title: req.query.title, //get써서 query 사용. post면 body 사용
+        writer: req.query.writer,
+        date: req.query.date
+    };
+
     let queryWhere = {}; //
-    queryWhere.id = { [Op.in] : [Number(req.query.id)]}; // -> queryWhere = {}에 {COMP_ID : front에서 받아온 파라미터. COMP_ID를 키로 가지는 값 'A'} 들어감
+    queryWhere.id = { [Op.eq] : Number(req.query.id)}; // -> queryWhere = {}에 {COMP_ID : front에서 받아온 파라미터. COMP_ID를 키로 가지는 값 'A'} 들어감
     //axios로 받아온 쿼리파라미터는 숫자가 문자로 바뀌니까 다시 Number()로 숫자로 바꿔주고 []로 감싸서 다시 배열형태로 만들어줘야함
     //queryWhere.id 즉 postgreSQL 데이터에 있는 id칼럼은 interger 숫자이므로 오른쪽을 같은 형태로 만들어줘야함
-
-    await Boarddata.updateOne({ //수정 'const boardData = ' 앞부분 필요없음 저장하거나 다시 보낼 필요 없으니까
+    
+    await Boarddata.update(add, { //수정 'const boardData = ' 앞부분 필요없음 저장하거나 다시 보낼 필요 없으니까
         where : queryWhere
         //raw:true
     })
@@ -61,7 +64,7 @@ router.get('/change', async function(req, res, next) {
 
 router.get('/delete', async function(req, res, next) {
     
-    let queryWhere = {}; //
+    let queryWhere = {}; //[Op.in] 배열에 포함되면
     queryWhere.id = { [Op.in] : [Number(req.query.id)]}; // -> queryWhere = {}에 {COMP_ID : front에서 받아온 파라미터. COMP_ID를 키로 가지는 값 'A'} 들어감
     //axios로 받아온 쿼리파라미터는 숫자가 문자로 바뀌니까 다시 Number()로 숫자로 바꿔주고 []로 감싸서 다시 배열형태로 만들어줘야함
     //queryWhere.id 즉 postgreSQL 데이터에 있는 id칼럼은 interger 숫자이므로 오른쪽을 같은 형태로 만들어줘야함
